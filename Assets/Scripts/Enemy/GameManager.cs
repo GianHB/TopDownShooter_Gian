@@ -1,0 +1,66 @@
+﻿using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+
+public class GameManager : MonoBehaviour
+{
+    public static GameManager Instance { get; private set; }
+
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text killCounterText;
+    [SerializeField] private TMP_Text waveText;
+
+    private int enemiesKilled = 0;
+    private float elapsedTime = 0f;
+    private int currentWave = 1;
+    private bool isGameOver = false;
+
+    public int GetEnemiesKilled() => enemiesKilled;
+    public float GetElapsedTime() => elapsedTime;
+    public int GetCurrentWave() => currentWave;
+
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        if (isGameOver) return;
+
+        elapsedTime += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+        if (timerText != null)
+            timerText.text = $"Tiempo: {minutes:00}:{seconds:00}";
+
+        if (killCounterText != null)
+            killCounterText.text = $"Enemigos Eliminados: {enemiesKilled}";
+    }
+
+    public void SetWave(int waveNumber)
+    {
+        currentWave = waveNumber;
+        if (waveText != null)
+            waveText.text = $"Oleada: {waveNumber}";
+    }
+
+    public void AddKill()
+    {
+        enemiesKilled++;
+    }
+
+    public void GameOver()
+    {
+        isGameOver = true;
+        SceneManager.LoadScene("GameOver");
+    }
+
+}

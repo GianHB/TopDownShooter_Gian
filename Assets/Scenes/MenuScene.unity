@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 404978455}
   - component: {fileID: 404978454}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Ranking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 1478241223}
   - component: {fileID: 1478241222}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Trofeos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1180,6 +1180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trophiesButton: {fileID: 1478241222}
+  playButton: {fileID: 2141247976}
 --- !u!1 &2043202190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,7 +1332,7 @@ GameObject:
   - component: {fileID: 2141247977}
   - component: {fileID: 2141247976}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

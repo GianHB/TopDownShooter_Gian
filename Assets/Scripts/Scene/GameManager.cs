@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     public static int OleadasFinal = 0;
     public static int EnemigosMatadosFinal = 0;
 
+    private bool logroManiaco;
+    private bool logroSupervivencia;
+    private bool logroOleada5;
+    private bool logroDesastre;
+
     private void OnEnable()
     {
         PlayerHealth.OnPlayerDeath += GameOver;
@@ -52,16 +57,21 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return;
 
-        elapsedTime += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+            elapsedTime += Time.deltaTime;
+            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+
         if (timerText != null)
+        {
             timerText.text = $"Tiempo: {minutes:00}:{seconds:00}";
+        }
 
         if (killCounterText != null)
+        {
             killCounterText.text = $"Enemigos Eliminados: {enemiesKilled}";
-    }
+        }
 
+    }
     public void SetWave(int waveNumber)
     {
         currentWave = waveNumber;
@@ -82,6 +92,26 @@ public class GameManager : MonoBehaviour
 
         isGameOver = true;
 
+        if (EnemigosMatadosFinal <= 0)
+        {
+            Trophies.Unlock(269008);
+        }
+
+        if (EnemigosMatadosFinal >= 10)
+        {
+            GameJolt.API.Trophies.Unlock(268998);
+        }
+
+        if (TiempoFinal >= 60)
+        {
+            GameJolt.API.Trophies.Unlock(269007);
+        }
+          
+        if (OleadasFinal >= 5)
+        {
+            GameJolt.API.Trophies.Unlock(269010);
+        }
+           
         Scores.Add(Mathf.CeilToInt(TiempoFinal), $"{Mathf.CeilToInt(TiempoFinal)} segundos", 1008697, "", (success) =>
         {
         });

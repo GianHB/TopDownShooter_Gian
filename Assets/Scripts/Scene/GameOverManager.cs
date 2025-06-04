@@ -13,24 +13,19 @@ public class GameOverManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager no encontrado. Asegúrate de que persista entre escenas.");
-            return;
-        }
 
-        float totalSeconds = GameManager.Instance.GetElapsedTime();
+        float totalSeconds = GameManager.TiempoFinal;
         int minutes = Mathf.FloorToInt(totalSeconds / 60f);
         int seconds = Mathf.FloorToInt(totalSeconds % 60f);
 
         if (finalTimeText != null)
             finalTimeText.text = $"Tiempo Trascurrido: {minutes:00}:{seconds:00}";
 
-        int kills = GameManager.Instance.GetEnemiesKilled();
+        int kills = GameManager.EnemigosMatadosFinal;
         if (finalKillsText != null)
             finalKillsText.text = $"Enemigos eliminados: {kills}";
 
-        int wave = GameManager.Instance.GetCurrentWave();
+        int wave = GameManager.OleadasFinal;
         if (finalWaveText != null)
             finalWaveText.text = $"Oleada que Alcansaste: {wave}";
 

@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     private int currentWave = 1;
     private bool isGameOver = false;
 
-    public int GetEnemiesKilled() => enemiesKilled;
-    public float GetElapsedTime() => elapsedTime;
-    public int GetCurrentWave() => currentWave;
+    public static float TiempoFinal = 0;
+    public static int OleadasFinal = 0;
+    public static int EnemigosMatadosFinal = 0;
 
 
     private void Awake()
@@ -28,8 +28,15 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
+
+    private void Start()
+    {
+        TiempoFinal = 0;
+        OleadasFinal = 0;
+        EnemigosMatadosFinal = 0;
+    }
+
 
     private void Update()
     {
@@ -59,6 +66,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        TiempoFinal = elapsedTime;
+        OleadasFinal = currentWave;
+        EnemigosMatadosFinal = enemiesKilled;
+
         isGameOver = true;
         SceneManager.LoadScene("GameOver");
     }

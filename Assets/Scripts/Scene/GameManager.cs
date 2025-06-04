@@ -91,13 +91,11 @@ public class GameManager : MonoBehaviour
         Scores.Add(OleadasFinal, $"Oleada {OleadasFinal} alcanzada", 1010358, "", (success) =>
         {
         });
-        /*Scores.Add(Mathf.CeilToInt(TiempoFinal),
-        $"Tiempo: {Mathf.CeilToInt(TiempoFinal)}segundos | Enemigos: {EnemigosMatadosFinal} | Oleada: {OleadasFinal}",
+        Scores.Add(Mathf.CeilToInt(TiempoFinal),
+        $"Tiempo: {Mathf.CeilToInt(TiempoFinal)}s | Enemigos: {EnemigosMatadosFinal} | Oleada: {OleadasFinal}",
         1010362, "", (success) =>
         {
-        scoreSumited = true;
         });
-        */
         SceneManager.LoadScene("GameOver");
     }
 

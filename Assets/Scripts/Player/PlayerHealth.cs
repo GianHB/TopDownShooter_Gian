@@ -1,9 +1,12 @@
 using UnityEngine;
-
+using System;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
+
+
+    public static Action OnPlayerDeath;
 
     private void Start()
     {
@@ -22,10 +25,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.GameOver();
-        }
+        OnPlayerDeath?.Invoke();
         Destroy(gameObject);
     }
 }

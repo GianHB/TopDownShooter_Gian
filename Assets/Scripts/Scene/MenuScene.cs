@@ -8,6 +8,7 @@ public class MenuScene : MonoBehaviour
 {
     [SerializeField] private Button trophiesButton;
     [SerializeField] private Button playButton;
+    [SerializeField] private Button rankingButton;
 
     private void Awake()
     {
@@ -15,7 +16,11 @@ public class MenuScene : MonoBehaviour
         {
             GameJoltUI.Instance.ShowTrophies();
         });
-        
+        rankingButton.onClick.AddListener(() =>
+        {
+            GameJoltUI.Instance.ShowLeaderboards();
+        });
+
     }
 
     private void Start()

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using GameJolt.API;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,15 @@ public class GameManager : MonoBehaviour
     public static int OleadasFinal = 0;
     public static int EnemigosMatadosFinal = 0;
 
+    private void OnEnable()
+    {
+        PlayerHealth.OnPlayerDeath += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        PlayerHealth.OnPlayerDeath -= GameOver;
+    }
 
     private void Awake()
     {
@@ -71,6 +81,23 @@ public class GameManager : MonoBehaviour
         EnemigosMatadosFinal = enemiesKilled;
 
         isGameOver = true;
+
+        Scores.Add(Mathf.CeilToInt(TiempoFinal), $"{Mathf.CeilToInt(TiempoFinal)} segundos", 1008697, "", (success) =>
+        {
+        });
+        Scores.Add(EnemigosMatadosFinal, $"{EnemigosMatadosFinal} enemigos eliminados", 1010357, "", (success) =>
+        {
+        });
+        Scores.Add(OleadasFinal, $"Oleada {OleadasFinal} alcanzada", 1010358, "", (success) =>
+        {
+        });
+        /*Scores.Add(Mathf.CeilToInt(TiempoFinal),
+        $"Tiempo: {Mathf.CeilToInt(TiempoFinal)}segundos | Enemigos: {EnemigosMatadosFinal} | Oleada: {OleadasFinal}",
+        1010362, "", (success) =>
+        {
+        scoreSumited = true;
+        });
+        */
         SceneManager.LoadScene("GameOver");
     }
 

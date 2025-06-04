@@ -1181,6 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trophiesButton: {fileID: 1478241222}
   playButton: {fileID: 2141247976}
+  rankingButton: {fileID: 404978454}
 --- !u!1 &2043202190
 GameObject:
   m_ObjectHideFlags: 0

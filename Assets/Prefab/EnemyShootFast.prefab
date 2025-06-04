@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 5141014206097706003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4959, y: -3.7853, z: -13.1876}
-  m_LocalScale: {x: 0.12240301, y: 0.40159777, z: 0.11111059}
+  m_LocalPosition: {x: 3.53142, y: -3.7853, z: -13.1359}
+  m_LocalScale: {x: 0.19343716, y: 0.40159777, z: 0.2145503}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c99b080057172742b50b7922bfeef56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 50
   moveSpeed: 0.3
-  contactDamage: 40
+  contactDamage: 10
 --- !u!65 &3987499154457488941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168,4 +168,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5956736150516761726, guid: 4d97e649219d0b14686d3f9cc2d5c6c4, type: 3}
   shootTime: 3
   numeroBalas: 2
-  tiempoEntreBalas: 0.25
+  tiempoEntreBalas: 0.2

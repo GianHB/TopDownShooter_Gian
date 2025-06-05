@@ -20,11 +20,6 @@ public class GameManager : MonoBehaviour
     public static int OleadasFinal = 0;
     public static int EnemigosMatadosFinal = 0;
 
-    private bool logroManiaco;
-    private bool logroSupervivencia;
-    private bool logroOleada5;
-    private bool logroDesastre;
-
     private void OnEnable()
     {
         PlayerHealth.OnPlayerDeath += GameOver;
@@ -76,7 +71,10 @@ public class GameManager : MonoBehaviour
     {
         currentWave = waveNumber;
         if (waveText != null)
+        {
             waveText.text = $"Oleada: {waveNumber}";
+        }
+            
     }
 
     public void AddKill()
@@ -121,11 +119,13 @@ public class GameManager : MonoBehaviour
         Scores.Add(OleadasFinal, $"Oleada {OleadasFinal} alcanzada", 1010358, "", (success) =>
         {
         });
+
         Scores.Add(Mathf.CeilToInt(TiempoFinal),
         $"Tiempo: {Mathf.CeilToInt(TiempoFinal)}s | Enemigos: {EnemigosMatadosFinal} | Oleada: {OleadasFinal}",
         1010362, "", (success) =>
         {
         });
+
         SceneManager.LoadScene("GameOver");
     }
 

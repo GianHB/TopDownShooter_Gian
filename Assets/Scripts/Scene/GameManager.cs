@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
         if (EnemigosMatadosFinal <= 0)
         {
-            Trophies.Unlock(269008);
+            GameJolt.API.Trophies.Unlock(269008);
         }
 
         if (EnemigosMatadosFinal >= 10)

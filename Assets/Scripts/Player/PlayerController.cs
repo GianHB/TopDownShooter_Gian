@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");
         Vector3 moveDir = new Vector3(moveX, 0f, moveZ).normalized;
